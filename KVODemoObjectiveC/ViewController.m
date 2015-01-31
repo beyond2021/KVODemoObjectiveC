@@ -74,6 +74,17 @@
     NSLog(@"%@, %lu", self.child2.child.name, (unsigned long)self.child2.child.age);
     
     
+    //Perfect! Now, what if the child of the child has a child too? Let’s see this case too (the commands are given altogether):
+    self.child3 = [[Children alloc] init];
+    self.child3.child = [[Children alloc] init];
+    self.child3.child.child = [[Children alloc] init];
+    
+    [self.child3 setValue:@"Tom" forKeyPath:@"child.child.name"];
+    [self.child3 setValue:[NSNumber numberWithInteger:2] forKeyPath:@"child.child.age"];
+    
+    NSLog(@"%@, %lu", self.child3.child.child.name, (unsigned long)self.child3.child.child.age);
+    
+    
 }
 
 

@@ -43,7 +43,7 @@
     
     //Using KVC
     
-    [self.child1 setValue:@"George" forKey:@"namee"];//we set the desired values to both properties using the setValue:forKey
+    [self.child1 setValue:@"George" forKey:@"name"];//we set the desired values to both properties using the setValue:forKey
     
     [self.child1 setValue:[NSNumber numberWithInteger:15] forKey:@"age"];//we set the desired values to both properties using the setValue:forKey. Pay attention to the fact that the age is a number, therefore it cannot be passed directly as an argument to that method. Instead, we must convert it to a NSNumber object first. Besides that, watch that the key strings are the same to the properties’s names.
     

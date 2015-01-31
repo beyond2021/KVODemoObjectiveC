@@ -85,9 +85,48 @@
     NSLog(@"%@, %lu", self.child3.child.child.name, (unsigned long)self.child3.child.child.age);
     
     
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //The most important thing when we want to observe for changes of a property, is to make our class observe for these change
+    [self.child1 addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.child1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+     [self.child1 setValue:@"Michael" forKey:@"name"];
 }
 
 
+/*
+ The parameters the above method accepts are:
+ 
+ addObserver: This is the observing class, usually the self object.
+ forKeyPath: I guess you can understand what’s this for. It is the string you used as a key or a key path and matches to the property you want to observe. Note that you specify here either a single key, or a key path.
+ options: By setting a value other than 0 (zero) to this parameter, you specify what the notification should contain. You can set a single value, or a combination of NSKeyValueObservingOptions values, combining them using the logical or (|). In the above example, we ask from the notifications to contain both the old and the new value of the properties we observe.
+ context: This is a pointer that can be used as a unique identifier for the change of the property we observe. Usually this is set to nil or NULL. We’ll see more about this later.
+ 
+ Now that we have made our class able to observe for any changes in the above two properties, we must implement the observeValueForKeyPath:ofObject:change:context: method. Its implementation is mandatory, and it has one great disadvantage. That is the fact that is called for every KVO change, and if you observe many properties then you must write a lot of if statements so as to take the proper actions for each property. However, this can be easily overlooked as the benefits of the KVO are greater than this limitation.
+ */
+
+
+
+//Now that we have made our class able to observe for any changes in (viewWillAppear)the above two properties, we must implement the observeValueForKeyPath:ofObject:change:context: method
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    //As you see, we do nothing special here (for the sake of the demonstration). What we only do, is to determine the property that was changed based on the keyPath parameter, and then to display just a single message along with the dictionary containing the changes that took place. In a real application, you apply all the needed logic to handle all the changes in each case.
+    
+    if ([keyPath isEqualToString:@"name"]) {
+        NSLog(@"The name of the child was changed.");
+        NSLog(@"%@", change);
+    }
+    
+    if ([keyPath isEqualToString:@"age"]) {
+        NSLog(@"The age of the child was changed.");
+        NSLog(@"%@", change);
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

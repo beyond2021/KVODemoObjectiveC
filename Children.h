@@ -14,4 +14,5 @@
 
 @property (nonatomic) NSUInteger age;
 
+@property (nonatomic, strong) Children *child; //With this, we can represent in code the child of a child (and so on)
 @end

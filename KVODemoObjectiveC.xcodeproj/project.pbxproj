@@ -14,6 +14,7 @@
 		224AD9FF1A7C4DF700444F34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224AD9FE1A7C4DF700444F34 /* Images.xcassets */; };
 		224ADA021A7C4DF700444F34 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224ADA001A7C4DF700444F34 /* LaunchScreen.xib */; };
 		224ADA0E1A7C4DF800444F34 /* KVODemoObjectiveCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 224ADA0D1A7C4DF800444F34 /* KVODemoObjectiveCTests.m */; };
+		224ADA191A7D86D500444F34 /* Children.m in Sources */ = {isa = PBXBuildFile; fileRef = 224ADA181A7D86D500444F34 /* Children.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		224ADA071A7C4DF800444F34 /* KVODemoObjectiveCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVODemoObjectiveCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		224ADA0C1A7C4DF800444F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		224ADA0D1A7C4DF800444F34 /* KVODemoObjectiveCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVODemoObjectiveCTests.m; sourceTree = "<group>"; };
+		224ADA171A7D86D500444F34 /* Children.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Children.h; sourceTree = "<group>"; };
+		224ADA181A7D86D500444F34 /* Children.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Children.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 		224AD9E51A7C4DF700444F34 = {
 			isa = PBXGroup;
 			children = (
+				224ADA171A7D86D500444F34 /* Children.h */,
+				224ADA181A7D86D500444F34 /* Children.m */,
 				224AD9F01A7C4DF700444F34 /* KVODemoObjectiveC */,
 				224ADA0A1A7C4DF800444F34 /* KVODemoObjectiveCTests */,
 				224AD9EF1A7C4DF700444F34 /* Products */,
@@ -221,6 +226,7 @@
 			files = (
 				224AD9FA1A7C4DF700444F34 /* ViewController.m in Sources */,
 				224AD9F71A7C4DF700444F34 /* AppDelegate.m in Sources */,
+				224ADA191A7D86D500444F34 /* Children.m in Sources */,
 				224AD9F41A7C4DF700444F34 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

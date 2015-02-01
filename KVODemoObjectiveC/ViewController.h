@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+static void *child1Context = &child1Context;
+static void *child2Context = &child2Context;
+
 
 @interface ViewController : UIViewController
 

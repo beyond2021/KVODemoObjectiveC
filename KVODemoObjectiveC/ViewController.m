@@ -88,14 +88,22 @@
     
 }
 
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //The most important thing when we want to observe for changes of a property, is to make our class observe for these change
-    [self.child1 addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [self.child1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.child1 addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child1Context];
+    [self.child1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child1Context];
     
-     [self.child1 setValue:@"Michael" forKey:@"name"];
-}
+    [self.child1 setValue:@"Keevin" forKey:@"name"];
+    [self.child1 setValue:[NSNumber numberWithInteger:100] forKey:@"age"];
+    
+    [self.child2 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child2Context];
+    
+    [self.child2 setValue:[NSNumber numberWithInteger:45] forKey:@"age"];
+    
+ 
+    }
 
 
 /*
@@ -114,6 +122,28 @@
 //Now that we have made our class able to observe for any changes in (viewWillAppear)the above two properties, we must implement the observeValueForKeyPath:ofObject:change:context: method
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    if (context == child1Context) {
+        if ([keyPath isEqualToString:@"name"]) {
+            NSLog(@"The name of the FIRST child was changed.");
+            NSLog(@"%@", change);
+        }
+        
+        if ([keyPath isEqualToString:@"age"]) {
+            NSLog(@"The age of the FIRST child was changed.");
+            NSLog(@"%@", change);
+        }
+    }
+    else if (context == child2Context){
+        if ([keyPath isEqualToString:@"age"]) {
+            NSLog(@"The age of the SECOND child was changed.");
+            NSLog(@"%@", change);
+        }
+    }
+}
+
+/*
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     //As you see, we do nothing special here (for the sake of the demonstration). What we only do, is to determine the property that was changed based on the keyPath parameter, and then to display just a single message along with the dictionary containing the changes that took place. In a real application, you apply all the needed logic to handle all the changes in each case.
     
     if ([keyPath isEqualToString:@"name"]) {
@@ -127,10 +157,28 @@
     }
     
 }
+ */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+/*
+Lastly and before we reach at the end of this chapter, it’s also quite important at some point to remove the observers you add. There is not a recipe on where you should do that. For instance, in many cases it would be useful to do that in the observeValueForKeyPath:ofObject:change:context:, after you have handled a received notification. In other cases, you should do so upon the dismissal of a view controller. Generally, it’s up to your application’s structure the decision you will make about that. In this example, we will do it in the viewWillDissapear: method. Here it is:
+ */
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [self.child1 removeObserver:self forKeyPath:@"name"];
+    [self.child1 removeObserver:self forKeyPath:@"age"];
+    [self.child2 removeObserver:self forKeyPath:@"age"];
+}
+
+
+
 
 @end

@@ -7,6 +7,7 @@
 //   the name and the age of a hypothetic person’s children
 
 #import <Foundation/Foundation.h>
+# import "KVCMutableArray.h"
 
 @interface Children : NSObject
 
@@ -30,5 +31,12 @@
 -(void)removeObjectFromSiblingsAtIndex:(NSUInteger)index;
 
 //Notice how the siblings array name is used in the above declarations, and that the first letter is always capital
+
+
+
+
+//Let’s assume now that in the Children (This) class we want to add and observe a new array, which will contain the names of the cousins of a child. It’s obvious that instead of a normal mutable array, we will use an object of the KVCMutableArray class.
+@property (nonatomic, strong) KVCMutableArray *cousins;
+
 
 @end

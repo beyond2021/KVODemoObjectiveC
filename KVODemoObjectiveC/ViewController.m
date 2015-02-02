@@ -124,7 +124,16 @@
     [self.child1 removeObjectFromSiblingsAtIndex:1];
     
     //Perfect! Not only we implemented the methods needed to make our array KVC compliant, we also used them to add and remove objects. There’s one step remaining, and that is to handle the received notification to the observeValueForKeyPath:object:change:context: method
- 
+    
+    
+    //  the reusable array class
+    //Firstly, notice the keypath value we use. Remember that what we want to observe is the array of the KVCMutableArray class, and not the object itself, so we use the dot syntax to specify that. Secondly, to insert new objects we call the custom KVC compliant method we implemented, and lastly we make use of the new method to replace the first object
+    [self.child1 addObserver:self forKeyPath:@"cousins.array" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    [self.child1.cousins insertObject:@"Antony" inArrayAtIndex:0];
+    [self.child1.cousins insertObject:@"Julia" inArrayAtIndex:1];
+    [self.child1.cousins replaceObjectInArrayAtIndex:0 withObject:@"Ben"];
+    
     }
 
 
@@ -171,6 +180,13 @@
         if ([keyPath isEqualToString:@"siblings"]) {
             NSLog(@"%@", change);
         }
+        
+        // to observe the array the reusable class
+        
+        if ([keyPath isEqualToString:@"cousins.array"]) {
+            NSLog(@"%@", change);
+        }
+        
     }
 }
 

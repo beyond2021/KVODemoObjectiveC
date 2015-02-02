@@ -17,7 +17,11 @@
     if (self) {
         self.name = @"";
         self.age = 0;
-         self.siblings = [[NSMutableArray alloc] init];    }
+         self.siblings = [[NSMutableArray alloc] init];
+        
+        self.cousins = [[KVCMutableArray alloc] init];//initializing the cousins.
+        //  the reusable array class
+    }
     return self;
 }
 

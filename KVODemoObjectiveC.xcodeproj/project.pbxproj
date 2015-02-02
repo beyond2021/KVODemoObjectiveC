@@ -15,6 +15,7 @@
 		224ADA021A7C4DF700444F34 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224ADA001A7C4DF700444F34 /* LaunchScreen.xib */; };
 		224ADA0E1A7C4DF800444F34 /* KVODemoObjectiveCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 224ADA0D1A7C4DF800444F34 /* KVODemoObjectiveCTests.m */; };
 		224ADA191A7D86D500444F34 /* Children.m in Sources */ = {isa = PBXBuildFile; fileRef = 224ADA181A7D86D500444F34 /* Children.m */; };
+		22E132691A8014BA004FE655 /* KVCMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E132681A8014BA004FE655 /* KVCMutableArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		224ADA0D1A7C4DF800444F34 /* KVODemoObjectiveCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVODemoObjectiveCTests.m; sourceTree = "<group>"; };
 		224ADA171A7D86D500444F34 /* Children.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Children.h; sourceTree = "<group>"; };
 		224ADA181A7D86D500444F34 /* Children.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Children.m; sourceTree = "<group>"; };
+		22E132671A8014BA004FE655 /* KVCMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCMutableArray.h; sourceTree = "<group>"; };
+		22E132681A8014BA004FE655 /* KVCMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCMutableArray.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				224AD9F61A7C4DF700444F34 /* AppDelegate.m */,
 				224AD9F81A7C4DF700444F34 /* ViewController.h */,
 				224AD9F91A7C4DF700444F34 /* ViewController.m */,
+				22E132671A8014BA004FE655 /* KVCMutableArray.h */,
+				22E132681A8014BA004FE655 /* KVCMutableArray.m */,
 				224AD9FB1A7C4DF700444F34 /* Main.storyboard */,
 				224AD9FE1A7C4DF700444F34 /* Images.xcassets */,
 				224ADA001A7C4DF700444F34 /* LaunchScreen.xib */,
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E132691A8014BA004FE655 /* KVCMutableArray.m in Sources */,
 				224AD9FA1A7C4DF700444F34 /* ViewController.m in Sources */,
 				224AD9F71A7C4DF700444F34 /* AppDelegate.m in Sources */,
 				224ADA191A7D86D500444F34 /* Children.m in Sources */,
@@ -418,6 +424,7 @@
 				224ADA131A7C4DF800444F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		224ADA141A7C4DF800444F34 /* Build configuration list for PBXNativeTarget "KVODemoObjectiveCTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				224ADA161A7C4DF800444F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

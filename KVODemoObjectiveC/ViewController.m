@@ -44,7 +44,9 @@
     //Using KVC
     //Here we are setting values using keys. Also, we have seen and underlined what happens if a key name is mistyped.
     
-    [self.child1 setValue:@"George" forKey:@"name"];//we set the desired values to both properties using the setValue:forKey
+   [self.child1 setValue:@"George" forKey:@"name"];//we set the desired values to both properties using the setValue:forKey
+    
+
     
     [self.child1 setValue:[NSNumber numberWithInteger:15] forKey:@"age"];//we set the desired values to both properties using the setValue:forKey. Pay attention to the fact that the age is a number, therefore it cannot be passed directly as an argument to that method. Instead, we must convert it to a NSNumber object first. Besides that, watch that the key strings are the same to the properties’s names.
     
@@ -95,13 +97,33 @@
     [self.child1 addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child1Context];
     [self.child1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child1Context];
     
-    [self.child1 setValue:@"Keevin" forKey:@"name"];
+  // [self.child1 setValue:@"Keevin" forKey:@"name"];
+    
+    
+   // [self.child1 willChangeValueForKey:@"name"];
+   // self.child1.name = @"Keevin";
+   // [self.child1 didChangeValueForKey:@"name"];
+    
+    
     [self.child1 setValue:[NSNumber numberWithInteger:100] forKey:@"age"];
     
     [self.child2 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:child2Context];
     
     [self.child2 setValue:[NSNumber numberWithInteger:45] forKey:@"age"];
     
+    self.child1.name = @"Michael";
+    
+    
+    //The first step in KVO is to always observe for the desired property,
+    [self.child1 addObserver:self forKeyPath:@"siblings" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    //Now, let’s add some objects to the array, and then remove one of them:
+    [self.child1 insertObject:@"Alex" inSiblingsAtIndex:0];
+    [self.child1 insertObject:@"Bob" inSiblingsAtIndex:1];
+    [self.child1 insertObject:@"Mary" inSiblingsAtIndex:2];
+    [self.child1 removeObjectFromSiblingsAtIndex:1];
+    
+    //Perfect! Not only we implemented the methods needed to make our array KVC compliant, we also used them to add and remove objects. There’s one step remaining, and that is to handle the received notification to the observeValueForKeyPath:object:change:context: method
  
     }
 
@@ -129,14 +151,24 @@
             NSLog(@"%@", change);
         }
         
+        // to observe the age
+        
         if ([keyPath isEqualToString:@"age"]) {
             NSLog(@"The age of the FIRST child was changed.");
             NSLog(@"%@", change);
         }
     }
+    // to observe the context
     else if (context == child2Context){
         if ([keyPath isEqualToString:@"age"]) {
             NSLog(@"The age of the SECOND child was changed.");
+            NSLog(@"%@", change);
+        }
+    }
+    
+    // to observe the array
+    else{
+        if ([keyPath isEqualToString:@"siblings"]) {
             NSLog(@"%@", change);
         }
     }

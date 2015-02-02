@@ -15,4 +15,20 @@
 @property (nonatomic) NSUInteger age;
 
 @property (nonatomic, strong) Children *child; //With this, we can represent in code the child of a child (and so on)
+@property (nonatomic, strong) NSMutableArray *siblings;
+
+
+-(NSUInteger)countOfSiblings;
+
+-(id)objectInSiblingsAtIndex:(NSUInteger)index;
+
+-(void)insertObject:(NSString *)object inSiblingsAtIndex:(NSUInteger)index; // Xcode does not set the type of the objects to the parameters automatically, but it let’s you type them according to the kind of data you are going to have in your array. In other words, if you start typing it Xcode will suggest you this:
+
+
+//-(void)insertObject:(<object-type> *)object inSiblingsAtIndex:(<NSUInteger>)index
+
+-(void)removeObjectFromSiblingsAtIndex:(NSUInteger)index;
+
+//Notice how the siblings array name is used in the above declarations, and that the first letter is always capital
+
 @end
